@@ -16,7 +16,7 @@ module.exports.handleEvent = function({ api, event, client, __GLOBAL }) {
   var { threadID, messageID } = event;
   if (event.body.indexOf("Bye")==0 || (event.body.indexOf("bye")==0)) {
     var msg = {
-        body: "See You Soon ${name} .",
+        body: 'See You Soon  👋',
         attachment: fs.createReadStream(__dirname + `/noprefix/bye.gif`)
       }
       api.sendMessage(msg, threadID, messageID);
