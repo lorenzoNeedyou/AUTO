@@ -1,6 +1,6 @@
 <br />
 <p align="center">
-    <a href="https://www.facebook.com/100082342305590">
+    <a href="https://www.facebook.com/profile.php?id=100082342305590&mibextid=ZbWKwL">
         <img src="https://i.imgur.com/YSarIDx.gif" alt="Logo">
     </a>
 
