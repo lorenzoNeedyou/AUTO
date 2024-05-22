@@ -16,7 +16,7 @@ module.exports.handleEvent = async ({
       if (error) {
         api.sendMessage(`Unable to re-add member ${name} to the group!`, event.threadID);
       } else {
-        api.sendMessage(`HAHAHA wla kang takas dito, ${name} has been re-added to the group successfully!`, event.threadID);
+        api.sendMessage(`HAHA dika dito makakatakas, ${name} has been re-added to the group successfully!`, event.threadID);
       }
     });
   }
