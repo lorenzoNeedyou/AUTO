@@ -27,9 +27,9 @@ api.sendTypingIndicator(event.threadID, true);
     }
 
  try {
-  const response = await axios.post(`https://shoti-srv1.onrender.com/api/v1/get`, { apikey: `$shoti-1hud1s9vefkb63fsqt` });
+  const response = await axios.post(`https://shoti-srv1.onrender.com/api/v1/get`, { apikey: `$shoti-1hucvc55tqbqkj1sjm` });
 
-  const path = __dirname + `./script/cache/shoti/shoti.mp4`;
+  const path = __dirname + `/cache/shoti/shoti.mp4`;
   const file = fs.createWriteStream(path);
   const rqs = request(encodeURI(response.data.data.url));
   rqs.pipe(file);
