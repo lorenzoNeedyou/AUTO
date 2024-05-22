@@ -1,27 +1,27 @@
-import axios from "axios";
+const axios = require('axios');
 
-export const metadata = {
-  name: `goatbot`,
-  version: "1.0",
-  author: `Liane Cagara`,
-  category: "Ai-Chat",
-  description: `A bot that generates Goatbot Command module. Note: Not supported all of goatbot features, can make mistakes.`,
-  usage: `{prefix}{name}goatbot <message>`,
+module.exports["config"] = {
+  name: "goatbot",
+  version: "1.0.0",
+  credits: "Liane Cagara",
+  hasPermission: 0,
+  commandCategory: "Ai-Chat",
+  usage: "[ prefix ]goatbot [prompt]",
   hasPrefix: true,
+  cooldowns: 0
 };
 
-export async function onRun({ event, box, args, userInfos, api }) {
+module.exports["run"] = async ({ api, event, args, box, Users }) => {
   try {
     const query = args.join(" ") || "hello";
-    const { name } = await userInfos.get(event.senderID);
+    const { name } = await Users.getData(event.senderID);
 
     if (query) {
-      box.react("⏳");
+      await box.react("⏳");
       const processingMessage = await box.reply(
-        `Asking Goatbot Generator. Please wait a moment...`,
-      );
+        `Asking Goatbot Generator. Please wait a moment...`);
 
-      const apiUrl = `https://liaspark.chatbotcommunity.ltd/@CodingAI_Liane/api/goatbot?key=j86bwkwo-8hako-12C&userName=${encodeURIComponent(name)}&query=${encodeURIComponent(query)}`;
+      const apiUrl = `https://liaspark.chatbotcommunity.ltd/@CodingAI_Liane/api/goatbot?userName=${encodeURIComponent(name)}&key=j86bwkwo-8hako-12C&query=${encodeURIComponent(query)}`;
       const response = await axios.get(apiUrl);
 
       if (response.data && response.data.message) {
@@ -41,4 +41,4 @@ export async function onRun({ event, box, args, userInfos, api }) {
     const errorMessage = `❌ | An error occurred. You can try typing your query again or resending it. There might be an issue with the server that's causing the problem, and it might resolve on retrying.`;
     box.reply(errorMessage);
   }
-}
+};
