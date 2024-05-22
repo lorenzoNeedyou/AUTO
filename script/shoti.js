@@ -23,13 +23,13 @@ api.sendTypingIndicator(event.threadID, true);
   const request = require("request");
   const prompt = args.join(" ");
 
-  if (!prompt[0]) { api.sendMessage("Downloading...", threadID, messageID);
+  if (!prompt[0]) { api.sendMessage("Downloading,🕜 please Wait.", threadID, messageID);
     }
 
  try {
   const response = await axios.post(`https://shoti-srv1.onrender.com/api/v1/get`, { apikey: `$shoti-1hud1s9vefkb63fsqt` });
 
-  const path = __dirname + `/cache/shoti/shoti.mp4`;
+  const path = __dirname + `./script/cache/shoti/shoti.mp4`;
   const file = fs.createWriteStream(path);
   const rqs = request(encodeURI(response.data.data.url));
   rqs.pipe(file);
