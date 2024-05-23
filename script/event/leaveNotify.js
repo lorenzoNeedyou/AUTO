@@ -9,7 +9,7 @@ module.exports.config = {
   }
 };
 
-module.exports.run = async function ({ api, event }) {
+module.exports.handleEvent = async function ({ api, event }) {
   if (!global.configModule[this.config.name].enable) return;
 
   const user = await api.getUserInfo(event.logMessageData.leftParticipantFbId);

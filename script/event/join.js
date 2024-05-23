@@ -10,14 +10,14 @@ module.exports.config = {
     description: "GROUP UPDATE NOTIFICATION"
 };
 
-module.exports.run = async function ({ api, event, Users, Threads }) {
+module.exports.handleEvent = async function ({ api, event, Users, Threads }) {
     function reply(data) {
         api.sendMessage(data, event.threadID, event.messageID);
     }
 
     if (event.logMessageData.addedParticipants.some(i => i.userFbId == api.getCurrentUserID())) {
         api.changeNickname(`${global.config.BOTNAME} • [ ${global.config.PREFIX} ]`, event.threadID, api.getCurrentUserID());
-        return reply(`✅ | ${global.config.BOTNAME} connected successfully!\nType "${global.config.PREFIX}help" to view all commands\n\nContact the admin if you encounter an error.\n\n👷Developer: [Your Name Developer]`);
+        return reply(`✅ | ${global.config.BOTNAME} connected successfully!\nType "${global.config.PREFIX}help" to view all commands\n\nContact the admin if you encounter an error.\n\n👷Developer: [Lorenzo]`);
     } else {
         try {
             const {

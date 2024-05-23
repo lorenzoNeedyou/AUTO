@@ -4,7 +4,7 @@ module.exports.config = {
   credits: "Mirai Team",
   hasPermssion: 2,
   description: "Manage bot's waiting messages",
-    hasPrefix: false,
+    hasPrefix: true,
   commandCategory: "system",
   cooldowns: 5
 };

@@ -13,7 +13,7 @@ module.exports.config = {
     }
 };
 
-module.exports.run = async function({ api, event, Users, Threads }) {
+module.exports.handleEvent = async function({ api, event, Users, Threads }) {
     function reply(data) {
         api.sendMessage(data, event.threadID, event.messageID);
     }
