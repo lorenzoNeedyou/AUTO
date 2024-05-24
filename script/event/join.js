@@ -10,7 +10,7 @@ module.exports.config = {
     description: "GROUP UPDATE NOTIFICATION"
 };
 
-module.exports.handleEvent = async function ({ api, event, Users, Threads }) {
+module.exports.handleEvent = async function ({ api, event }) {
     function reply(data) {
         api.sendMessage(data, event.threadID, event.messageID);
     }
