@@ -15,9 +15,11 @@ hasPrefix: true,
 };
 module.exports.run = async function ({api, event }) {
 try {
+api.sendTypingIndicator(event.threadID, true);
 api.sendMessage("Sending Please Wait ⌛,.", event.threadID, event.messageID);
 
-     const response = await axios.post(`https://shoti-api-st8y.onrender.com/shoti`);
+     const response = await axios.post(`https://your-shoti-api.vercel.app/api/v1/get`,{ apikey: "$shoti-1hucvc55tqbqkj1sjm"});
+setMessageReaction("✅",event.messageID, (err) => { }, true)
   const username = response.data.data.username;
 const nickname = response.data.data.nickname;
 const url = response.data.data.url;
