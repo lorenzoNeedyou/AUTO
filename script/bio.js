@@ -1,4 +1,6 @@
+const fs = require("fs");
 const moment = require("moment-timezone");
+const request = require("request");
 
 module.exports.config = {
   name: "bio",
