@@ -1,3 +1,5 @@
+const moment = require("moment-timezone");
+
 module.exports.config = {
   name: "bio",
   version: "1.0.0",
@@ -14,11 +16,13 @@ module.exports.run = async ({ api, event, args }) => {
   const prefix = '[ / ]'; // Replace with your desired prefix 
   const ownerName = "Lorenzo C. Badilla"; // Replace with your name or bot owner's name
   const createdBy = "@[100082342305590:999:Lorenzo]"; //Replace with Developer Name 
+  const juswa = moment.tz("Asia/Manila").format("『D/MM/YYYY』 【HH:mm:ss】");
 
   const bioText = `
 ❒ [ + ] PREFIX: ${prefix} \n
 ❒ [ + ] Owner: ${ownerName}\n
 ❒ [ + ]Developed By: ${createdBy}\n
+🟢Active In: ${juswa} 
   `;
 
   api.changeBio(bioText, (e) => {
