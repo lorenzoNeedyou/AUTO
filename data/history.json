@@ -1,0 +1,72 @@
+[
+  {
+    "userid": "61559954038239",
+    "prefix": "/",
+    "admin": [
+      "100082342305590"
+    ],
+    "blacklist": [],
+    "enableCommands": [
+      {
+        "commands": [
+          "accept",
+          "adc",
+          "adduser",
+          "ai",
+          "anime",
+          "antiadmin",
+          "autoaccept",
+          "autoseen",
+          "axis",
+          "badwords",
+          "bestgpt",
+          "bio",
+          "Block",
+          "bye",
+          "chat",
+          "dictionary",
+          "emojimix",
+          "goatai",
+          "help",
+          "hercai",
+          "imgbb",
+          "info",
+          "insult",
+          "kick",
+          "kickall",
+          "listbox",
+          "music",
+          "nica",
+          "otherbot",
+          "out",
+          "pickupline",
+          "pinterest",
+          "poli",
+          "quote",
+          "randomhugot",
+          "recipe",
+          "removebg",
+          "sendnoti",
+          "shoti",
+          "sim",
+          "spotify",
+          "teach",
+          "tempmail",
+          "tid",
+          "trans",
+          "ugh",
+          "unsend",
+          "uptime",
+          "Women"
+        ]
+      },
+      {
+        "handleEvent": [
+          "antiout",
+          "resend"
+        ]
+      }
+    ],
+    "time": 0
+  }
+]
