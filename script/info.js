@@ -23,8 +23,7 @@ module.exports.run = async function({ api, event, args }) {
     let minutes = Math.floor((time % (60 * 60)) / 60);
     let seconds = Math.floor(time % 60);
     const uptimeString = `${years > 0 ? `${years} years ` : ''}${months > 0 ? `${months} months ` : ''}${weeks > 0 ? `${weeks} weeks ` : ''}${days % 7 > 0 ? `${days % 7} days ` : ''}${hours > 0 ? `${hours} hours ` : ''}${minutes > 0 ? `${minutes} minutes ` : ''}${seconds} seconds`;
-
-    const prefix = "/";
+    const PREFIX = ${prefix};
     const CREATORLINK = "https://www.facebook.com/profile.php?id=100082342305590";
     const BOTCREATOR = "Lorenzo C. Badilla";
     const BOTNAME = "Lorenao Ai";
@@ -88,7 +87,7 @@ module.exports.run = async function({ api, event, args }) {
 ⁂ Bot Name: ${BOTNAME}
 ✧ Bot Admin: ${BOTCREATOR}
 ♛ Bot Admin Link: ${CREATORLINK}
-❂ Bot Prefix: ${prefix}
+❂ Bot Prefix: ${PREFIX}
 ✫ Files Owner: ${FILESOWNER}
 ➟ UPTIME ${uptimeString}
 ✬ Today is: ${juswa} 

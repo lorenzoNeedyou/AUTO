@@ -1,39 +1,52 @@
-const fs = require("fs");
-const path = require("path");
-const axios = require("axios");
-
 module.exports.config = {
- name: "bebe",
- version: "1.0.0",
- credits: "Lorenzo",
- hasPermssion: 0,
- commandCategory: "fun",
- description: "Sending Random Bebe Girl In tiktok",
- usages: "shoti",
- cooldowns: 9,
-hasPrefix: true,
+  name: "bebe",
+  version: "1.0.0",
+  hasPermission: 0,
+  credits: "Lorenzo",
+  description: "Generate a random bebe girl tiktok video.",
+  commandCategory: "Entertainment",
+  usage: "[]",
+  cooldowns: 0,
+  hasPrefix: true,
+  dependencies: {}
 };
-module.exports.run = async function ({api, event }) {
-try {
+
+module.exports.run = async ({ api, event, args }) => {
+
+  api.setMessageReaction("🕜", event.messageID, (err) => {
+     }, true);
 api.sendTypingIndicator(event.threadID, true);
-api.sendMessage("Sending Please Wait ⌛,.", event.threadID, event.messageID);
 
-     const response = await axios.post(`https://your-shoti-api.vercel.app/api/v1/get`,{ apikey: "$shoti-1hucvc55tqbqkj1sjm"});
-setMessageReaction("✅",event.messageID, (err) => { }, true)
-  const username = response.data.data.username;
-const nickname = response.data.data.nickname;
-const url = response.data.data.url;
-const videoid = response.data.data.videoid;
+  const { messageID, threadID } = event;
+  const fs = require("fs");
+  const axios = require("axios");
+  const request = require("request");
+  const prompt = args.join(" ");
 
+  if (!prompt[0]) { api.sendMessage("Sending,🕜 please Wait.", threadID, messageID);
+    }
 
-let shotiPath = path.join(__dirname, "cache", "shoti.mp4");
+ try {
+  const response = await axios.post(`https://shoti-srv1.onrender.com/api/v1/get`, { apikey: `$shoti-1hundjf40cdik9hd1lg` });
 
-const video = await axios.get(url, { responseType: "arraybuffer" });
-
-fs.writeFileSync(shotiPath, Buffer.from(video.data, "utf-8"));
-
-await api.sendMessage({body: `Here's your Random Bebe Girl In TikTok\n\nUsername: ${username}\nNickname: ${nickname}`, attachment: fs.createReadStream(shotiPath) }, event.threadID, event.messageID);
-} catch (error) {
-api.sendMessage(`${error}`, event.threadID, event.messageID);
-}
+  const path = __dirname + `/cache/bebe.mp4`;
+  const file = fs.createWriteStream(path);
+  const rqs = request(encodeURI(response.data.data.url));
+  rqs.pipe(file);
+  file.on(`finish`, () => {
+     setTimeout(function() {
+       api.setMessageReaction("✅", event.messageID, (err) => {
+          }, true);
+      return api.sendMessage({
+      body: `Heres Your Random Bebe girl In tiktok. \n\nuserName : \n\n@${response.data.data.user.username} \n\nuserNickname : \n\n${response.data.data.user.nickname} \n\nuserID : \n\n${response.data.data.user.userID} \n\nDuration : \n\n${response.data.data.duration}`, 
+      attachment: fs.createReadStream(path)
+    }, threadID);
+      }, 5000);
+        });
+  file.on(`error`, (err) => {
+      api.sendMessage(`Error: ${err}`, threadID, messageID);
+  });
+   } catch (err) {
+    api.sendMessage(`Error: ${err}`, threadID, messageID);
+  };
 };
